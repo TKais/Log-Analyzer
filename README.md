@@ -13,6 +13,21 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * The articles table includes the articles themselves.
 * The log table includes one entry for each time a user has accessed the site. 
 
+## Before running the Log-Analyzer
+
+* [Install VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
+* [Install Vagrant](https://www.vagrantup.com/downloads.html) 
+
+## Running the Log-Analyzer
+
+* Clone repo
+* Run the command `cd vagrant`
+* Run the command `vagrant up`
+* Run the command `vagrant ssh`
+* Run the command `cd /vagrant/news`
+* Run the command `python news.py`
+* navigate to http://localhost:5000/ in your browser
+
 ## Technical Details
 This project utilizes the following technologies:
 
