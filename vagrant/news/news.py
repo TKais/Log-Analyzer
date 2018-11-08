@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, url_for
 
-# from newsdb import get_answers
+from newsdb import get_most_popular
 
 app = Flask(__name__)
 
