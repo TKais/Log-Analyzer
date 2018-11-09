@@ -16,7 +16,8 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 ## Before running the Log-Analyzer
 
 * [Install VirtualBox](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
-* [Install Vagrant](https://www.vagrantup.com/downloads.html) 
+* [Install Vagrant](https://www.vagrantup.com/downloads.html)
+* This project is meant to be ran with Python 3.4 or higher
 
 ## Running the Log-Analyzer
 
@@ -25,6 +26,7 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Run the command `vagrant up`
 * Run the command `vagrant ssh`
 * Run the command `cd /vagrant/news`
+* Run the command `pip3 install psycopg2`
 * Run the command `python news.py`
 * navigate to http://localhost:5000/ in your browser
 
