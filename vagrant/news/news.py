@@ -12,12 +12,12 @@ def get_most_popular_articles():
     print(file.read())
     file.close()
   else:
-    write_to_file(question, results)
+    write_to_file(question, 1, results)
 
 def write_to_file(question, results):
   new_file = open('output.txt','w')
   new_file.write(question + '\n')
-  print("Question 1: ", question)
+  print(question)
   for result in results:
     print(result[0] + ' : ' + result[1] + ' views')
     new_file.write('%s -- %d views \n' % (result[0], result[1]))
