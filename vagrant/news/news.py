@@ -8,19 +8,17 @@ def get_most_popular_articles():
   output_file = Path('./output.txt')
   question = 'What are the most popular three articles of all time?'
   if output_file.is_file():
-    print("IN READ MODE")
-    contents = output_file.read()
-    print(contents)
+    file = open('output.txt', 'r')
+    print(file.read())
   else:
     write_to_file(question, results)
 
 def write_to_file(question, results):
   new_file = open('output.txt','w')
   new_file.write(question + '\n')
-  print("IN WRITE MODE")
+  print("Question 1: ", question)
   for result in results:
-    print(result[0])
-    print(result[1])
+    print(result[0] + ' : ' + result[1] + ' views')
     new_file.write('%s -- %d views \n' % (result[0], result[1]))
   new_file.close()
 
