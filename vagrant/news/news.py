@@ -12,23 +12,19 @@ def get_most_popular_articles():
     print(file.read())
     file.close()
   else:
-    write_to_file(question, results)
+    write_to_file(question, 'w', results)
 
 def get_most_popular_authors():
   results = get_authors()
-  file = open('output.txt','a')
-  for result in results:
-    # print(result[0] + ' : ' + result[1] + ' views')
-    file.write('%s -- %d views \n' % (result[0], result[1]))
-  file.close()
-  print(results)
+  question = 'Who are the most popular article authors of all time?'
+  write_to_file(question, 'a', results)
 
-def write_to_file(question, results):
-  new_file = open('output.txt','w')
+def write_to_file(question, mode, results):
+  new_file = open('output.txt', mode)
   new_file.write(question + '\n')
   print(question)
   for result in results:
-    print(result[0] + ' : ' + result[1] + ' views')
+    print('%s : %d views' % (result[0], result[1]))
     new_file.write('%s -- %d views \n' % (result[0], result[1]))
   new_file.close()
 
