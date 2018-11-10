@@ -4,7 +4,7 @@ from newsdb import get_articles
 from pathlib import Path
 
 def get_most_popular_articles():
-  result = get_articles()
+  results = get_articles()
   output_file = Path('./output.txt')
   question = 'What are the most popular three articles of all time?'
   if output_file.is_file():
@@ -12,16 +12,16 @@ def get_most_popular_articles():
     contents = output_file.read()
     print(contents)
   else:
-    write_to_file(question, result)
+    write_to_file(question, results)
 
-def write_to_file(question, result):
+def write_to_file(question, results):
   new_file = open('output.txt','w')
+  new_file.write(question + '\n')
   print("IN WRITE MODE")
-  for i in result:
-    print(i[0])
-    print(i[1])
-    new_file.write(question)
-    new_file.write('%s : %d' % (i[0], i[1]))
+  for result in results:
+    print(result[0])
+    print(result[1])
+    new_file.write('%s -- %d views \n' % (result[0], result[1]))
   new_file.close()
 
 
