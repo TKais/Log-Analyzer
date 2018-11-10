@@ -10,6 +10,7 @@ def get_most_popular_articles():
   if output_file.is_file():
     file = open('output.txt', 'r')
     print(file.read())
+    file.close()
   else:
     write_to_file(question, results)
 
