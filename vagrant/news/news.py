@@ -21,8 +21,8 @@ def get_most_popular_authors():
 
 def write_to_file(question, mode, results):
   new_file = open('output.txt', mode)
-  new_file.write(question + '\n')
-  print(question)
+  new_file.write('\n' + question + '\n')
+  print(question + '\n')
   for result in results:
     print('%s : %d views' % (result[0], result[1]))
     new_file.write('%s -- %d views \n' % (result[0], result[1]))
