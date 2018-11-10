@@ -28,7 +28,6 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Run the command `cd /vagrant/news`
 * Run the command `pip3 install psycopg2`
 * Run the command `python3 news.py`
-* navigate to http://localhost:5000/ in your browser
 
 ## Technical Details
 This project utilizes the following technologies:
