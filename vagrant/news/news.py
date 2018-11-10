@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from newsdb import get_articles
+from newsdb import get_articles, get_authors
 from pathlib import Path
 
 def get_most_popular_articles():
@@ -13,6 +13,10 @@ def get_most_popular_articles():
     file.close()
   else:
     write_to_file(question, 1, results)
+
+def get_most_popular_authors():
+  results = get_authors()
+  print("Question 2: " + results)
 
 def write_to_file(question, results):
   new_file = open('output.txt','w')

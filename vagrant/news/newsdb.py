@@ -12,5 +12,10 @@ def get_result(db_query):
 
 def get_articles():
   select_query = "SELECT title, count(*) as view_count from articles, log WHERE log.path LIKE concat('%', articles.slug) GROUP BY articles.title ORDER BY view_count DESC LIMIT 3"
-  most_popular = get_result(select_query)
-  return most_popular
+  articles = get_result(select_query)
+  return articles
+
+def get_authors():
+  select_query = "SELECT"
+  authors = get_result(select_query)
+  return authors
