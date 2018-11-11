@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from newsdb import get_articles, get_authors, check_for_view
+from newsdb import get_articles, get_authors, get_errors, check_for_view
 from pathlib import Path
 
 def get_most_popular_articles():
@@ -19,6 +19,11 @@ def get_most_popular_authors():
   question = 'Who are the most popular article authors of all time?'
   write_to_file(question, 'a', results)
 
+def get_days_with_errors():
+  results = get_errors()
+  question = "On which days did more than 1 percent of requests lead to errors?"
+  print(results)
+
 def write_to_file(question, mode, results):
   new_file = open('output.txt', mode)
   new_file.write('\n' + question + '\n \n')
@@ -32,5 +37,6 @@ def start():
   check_for_view()
   get_most_popular_articles()
   get_most_popular_authors()
+  get_days_with_errors()
 
 start()
