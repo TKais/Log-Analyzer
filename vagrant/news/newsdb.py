@@ -34,3 +34,8 @@ def get_authors():
   select_query = "SELECT name, SUM(view_count) AS total_views FROM author_view GROUP BY name ORDER BY total_views DESC;"
   authors = get_result(select_query)
   return authors
+
+def get_errors():
+  select_query = ""
+  errors = get_result(select_query)
+  return errors
