@@ -26,6 +26,7 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Run the command `vagrant up`
 * Run the command `vagrant ssh`
 * Run the command `cd /vagrant/news`
+* Run the command `psql -d news -f newsdata.sql`
 * Run the command `pip3 install psycopg2`
 * Run the command `python3 news.py`
 
