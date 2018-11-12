@@ -12,21 +12,22 @@ def get_result(db_query):
 
 def check_for_views():
   views = {
-    "author_view": "CREATE OR REPLACE VIEW author_view AS SELECT authors.name, articles.title, count(log.path) AS view_count FROM authors, articles, log WHERE authors.id = articles.author and log.path LIKE concat('%', articles.slug) GROUP BY authors.name, articles.title, log.path;",
-    "error_view": "CREATE OR REPLACE VIEW error_view AS SELECT DATE(time), status, count(status) as num from log GROUP BY DATE(time), status;",
     "sum_view": "CREATE OR REPLACE VIEW sum_view AS SELECT date AS day, SUM(num) from error_view GROUP BY day;",
+    "error_view": "CREATE OR REPLACE VIEW error_view AS SELECT DATE(time), status, count(status) as num from log GROUP BY DATE(time), status;",
+    "author_view": "CREATE OR REPLACE VIEW author_view AS SELECT authors.name, articles.title, count(log.path) AS view_count FROM authors, articles, log WHERE authors.id = articles.author and log.path LIKE concat('%', articles.slug) GROUP BY authors.name, articles.title, log.path;",
   }
   all_current_views = "select viewname from pg_catalog.pg_views"
   results = get_result(all_current_views)
-  for view in views:
-    if view not in results:
-      create_views(views[view])
+  for view in sorted(views.keys()):
+    view_as_tuple = (view,)
+    if view_as_tuple not in results:
+      create_views(view, views[view])
 
-def create_views(new_view):
-  print("Creating views...")
+def create_views(view_key, view_value):
+  print("Creating view for %s..." % (view_key))
   db = psycopg2.connect(database=DBNAME)
   cursor = db.cursor();
-  cursor.execute(new_view)
+  cursor.execute(view_value)
   db.commit()
   db.close()
 
