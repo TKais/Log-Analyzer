@@ -46,27 +46,18 @@ def create_views(view_key, view_value):
 
 
 def get_articles():
-    select_query = "SELECT title, count(*)" +
-    " AS view_count FROM articles, log" +
-    " WHERE log.path LIKE concat('%', articles.slug)" +
-    " GROUP BY articles.title ORDER BY view_count DESC LIMIT 3"
+    select_query = "SELECT title, count(*) as view_count from articles, log WHERE log.path LIKE concat('%', articles.slug) GROUP BY articles.title ORDER BY view_count DESC LIMIT 3"  # nopep8
     articles = get_result(select_query)
     return articles
 
 
 def get_authors():
-    select_query = "SELECT name, SUM(view_count)" +
-    " AS total_views FROM author_view GROUP BY name" +
-    " ORDER BY total_views DESC;"
+    select_query = "SELECT name, SUM(view_count) AS total_views FROM author_view GROUP BY name ORDER BY total_views DESC;"  # nopep8
     authors = get_result(select_query)
     return authors
 
 
 def get_errors():
-    select_query = "SELECT * FROM" +
-    " (SELECT date, ROUND(status_count * 100 / status_sum, 2)" +
-    " AS percentage FROM error_view, sum_view WHERE date = day" +
-    " AND status = '404 NOT FOUND') AS percentages GROUP BY date," +
-    " percentage HAVING percentage > 1;"
+    select_query = "SELECT * FROM (SELECT date, ROUND(status_count * 100 / status_sum, 2) AS percentage FROM error_view, sum_view WHERE date = day AND status = '404 NOT FOUND') AS percentages GROUP BY date, percentage HAVING percentage > 1;"  # nopep8
     errors = get_result(select_query)
     return errors
