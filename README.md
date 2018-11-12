@@ -35,22 +35,25 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 This project utilizes 3 views, which are created for you:
 
 * author_view: 
+
   | Column     | Type    |
-  | :--------- | :-------|
+  | ---------  | -------:|
   | name       | text    |
   | title      | text    |
   | view_count | Integer |
 
 * error_view: 
+
   | Column      | Type    |
-  | :---------  | :-------|
+  | ---------   | -------:|
   | date        | date    |
   | status      | text    |
   | staus_count | Integer |
 
 * sum_view: 
+
   | Column      | Type    |
-  | :---------  | :-------|
+  | ---------   | -------:|
   | date        | date    |
   | status      | text    |
   | status_sum  | Integer |
