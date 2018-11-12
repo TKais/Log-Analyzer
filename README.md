@@ -29,6 +29,7 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Run the command `psql -d news -f newsdata.sql`
 * Run the command `pip3 install psycopg2`
 * Run the command `python3 news.py`
+* Once the script has logged "***Database queries complete!***" in the terminal, you can see the answers in the logs in your terminal, or open the file `output.txt` in `Log-Analyzer/vagrant/news/output.txt`.
 
 ## Technical Details
 This project utilizes the following technologies:
