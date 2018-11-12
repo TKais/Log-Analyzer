@@ -21,15 +21,39 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 
 ## Running the Log-Analyzer
 
-* Clone repo
-* Run the command `cd vagrant`
+* Clone Log-Analyzer repo
+* Once cloned, change into the directory for the Log-Analyzer project and Run the command `cd vagrant`
 * Run the command `vagrant up`
 * Run the command `vagrant ssh`
 * Run the command `cd /vagrant/news`
-* Run the command `psql -d news -f newsdata.sql`
 * Run the command `pip3 install psycopg2`
+* Run the command `psql -d news -f newsdata.sql`
 * Run the command `python3 news.py`
 * Once the script has logged "***Database queries complete!***" in the terminal, you can see the answers in the logs in your terminal, or open the file `output.txt` in `Log-Analyzer/vagrant/news/output.txt`.
+
+## Project Views
+This project utilizes 3 views, which are created for you:
+
+* author_view: 
+  | Column     | Type    |
+  | :--------- | :-------|
+  | name       | text    |
+  | title      | text    |
+  | view_count | Integer |
+
+* error_view: 
+  | Column      | Type    |
+  | :---------  | :-------|
+  | date        | date    |
+  | status      | text    |
+  | staus_count | Integer |
+
+* sum_view: 
+  | Column      | Type    |
+  | :---------  | :-------|
+  | date        | date    |
+  | status      | text    |
+  | status_sum  | Integer |
 
 ## Technical Details
 This project utilizes the following technologies:
