@@ -7,7 +7,7 @@ def check_for_output_file():
   print("\nChecking if text file 'output.txt' exists...")
   output_file = Path("./output.txt")
   if output_file.is_file():
-    print("\n File 'output.txt' exists! Here are the results: ")
+    print("\nFile 'output.txt' exists! Here are the results: ")
     file = open("output.txt", "r")
     print(file.read())
     file.close()
