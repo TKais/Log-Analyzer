@@ -30,6 +30,7 @@ def create_views(view_key, view_value):
   cursor.execute(view_value)
   db.commit()
   db.close()
+  print("View for %s complete." % (view_key))
 
 def get_articles():
   select_query = "SELECT title, count(*) as view_count from articles, log WHERE log.path LIKE concat('%', articles.slug) GROUP BY articles.title ORDER BY view_count DESC LIMIT 3"
