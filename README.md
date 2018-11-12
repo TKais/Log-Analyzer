@@ -34,7 +34,7 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 ## Query Output
 You can see the answers to the 3 questions by either:
 
-* Checking the logs in your terimal
+* Checking the logs in your terminal
 * Checking the auto-generated output.txt file in the `news` directory. This file is generated in `Log-Analyzer/vagrant/news/output.txt` after the first time `python3 news.py` is ran
 
 ## Project Views
