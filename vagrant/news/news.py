@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from newsdb import get_articles, get_authors, get_errors, create_views
+from newsdb import get_articles, get_authors, get_errors, check_for_views
 from pathlib import Path
 
 def get_most_popular_articles():
@@ -34,7 +34,7 @@ def write_to_file(question, mode, results):
   new_file.close()
 
 def start():
-  create_views()
+  check_for_views()
   get_most_popular_articles()
   get_most_popular_authors()
   get_days_with_errors()
