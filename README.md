@@ -31,6 +31,12 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Run the command `python3 news.py`
 * Once the script has logged "***Database queries complete!***" in the terminal, you can see the answers in the logs in your terminal, or open the file `output.txt` in `Log-Analyzer/vagrant/news/output.txt`.
 
+## Query Output
+You can see the answers to the 3 questions by either:
+
+* Checking the logs in your terimal
+* Checking the auto-generated output.txt file in the `news` directory. This file is generated in `Log-Analyzer/vagrant/news/output.txt` after the first time `python3 news.py` is ran
+
 ## Project Views
 This project utilizes 3 views, which are created for you:
 
