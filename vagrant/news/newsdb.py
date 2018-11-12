@@ -11,10 +11,11 @@ def get_result(db_query):
   return result
 
 def create_views():
+  print("Creating views...")
   views = {
     "author_view": "CREATE OR REPLACE VIEW author_view AS SELECT authors.name, articles.title, count(log.path) AS view_count FROM authors, articles, log WHERE authors.id = articles.author and log.path LIKE concat('%', articles.slug) GROUP BY authors.name, articles.title, log.path;",
     "error_view": "CREATE OR REPLACE VIEW error_view AS SELECT DATE(time), status, count(status) as num from log GROUP BY DATE(time), status;",
-    "sum_view": "CREATE OR REPLACE VIEW sum_view AS SELECT date, SUM(num) from error_view GROUP BY date;",
+    "sum_view": "CREATE OR REPLACE VIEW sum_view AS SELECT date AS day, SUM(num) from error_view GROUP BY day;",
   }
   db = psycopg2.connect(database=DBNAME)
   cursor = db.cursor();
