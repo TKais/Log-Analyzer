@@ -10,18 +10,24 @@ def get_result(db_query):
   db.close()
   return result
 
-def create_views():
-  print("Creating views...")
+def check_for_views():
   views = {
     "author_view": "CREATE OR REPLACE VIEW author_view AS SELECT authors.name, articles.title, count(log.path) AS view_count FROM authors, articles, log WHERE authors.id = articles.author and log.path LIKE concat('%', articles.slug) GROUP BY authors.name, articles.title, log.path;",
     "error_view": "CREATE OR REPLACE VIEW error_view AS SELECT DATE(time), status, count(status) as num from log GROUP BY DATE(time), status;",
     "sum_view": "CREATE OR REPLACE VIEW sum_view AS SELECT date AS day, SUM(num) from error_view GROUP BY day;",
   }
+  all_current_views = "select viewname from pg_catalog.pg_views"
+  results = get_result(all_current_views)
+  for view in views:
+    if view not in results:
+      create_views(views[view])
+
+def create_views(new_view):
+  print("Creating views...")
   db = psycopg2.connect(database=DBNAME)
   cursor = db.cursor();
-  for view in views:
-    cursor.execute(views[view])
-    db.commit()
+  cursor.execute(new_view)
+  db.commit()
   db.close()
 
 def get_articles():
