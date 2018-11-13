@@ -24,9 +24,9 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * Clone Log-Analyzer repo.
 * Once cloned, change into the directory for the Log-Analyzer project and run the command `cd vagrant`.
 * Inside the `vagrant` directory, run the command `vagrant up` to bring the virtual machine online.
-* Next, you'll need to log into the virtual machine. Do this by running the command `vagrant ssh`.
+* Next, you'll need to log into the virtual machine. Do this by running the command `vagrant ssh`. Once logged in, you'll be in the home directory -- run `cd ../../vagrant` to get into the correct directory.
 * This repository has the SQL file complete with the data needed in `Log-Analyzer/vagrant/news/newsdata.sql`, but if this fails for any reason, you can download the zip file [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip). Put this file in the vagrant directory, which is shared with your virtual machine.
-* To build the reporting tool, you'll need to load the site's data into your local database. To do this, run the command `cd /vagrant/news` to enter the correct directory, and then run `psql -d news -f newsdata.sql`. Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
+* To build the reporting tool, you'll need to load the site's data into your local database. To do this, make sure you're in the `Log-Analyzer/vagrant/news/` directory, and then run `psql -d news -f newsdata.sql`. Running this command will connect to your installed database server and execute the SQL commands in the downloaded file, creating tables and populating them with data.
 * The database this project uses is PostgreSQL, and uses the `psycopg2` module to connect to it. Run the command `pip3 install psycopg2` to install this module.
 * In the `news` directory, run the command `python3 news.py`.
 * Once the script has logged "***Database queries complete!***" in the terminal, you can see the answers in the logs in your terminal, or open the file `output.txt` in `Log-Analyzer/vagrant/news/output.txt`.
