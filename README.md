@@ -31,6 +31,13 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 * In the `news` directory, run the command `python3 news.py`.
 * Once the script has logged "***Database queries complete!***" in the terminal, you can see the answers in the logs in your terminal, or open the file `output.txt` in `Log-Analyzer/vagrant/news/output.txt`.
 
+## Exploring the database
+Outside of just running the `news.py` file, you can explore the database with the following commands:
+
+* `psql -d news`: Connects to the database. You must connect before running any of the following commands.
+* `\dt`: Stands for 'display tables'. Lists the tables that are available in the database.
+* `\d table`: Shows the database schema for that particular table.
+
 ## Query Output
 You can see the answers to the 3 questions by either:
 
