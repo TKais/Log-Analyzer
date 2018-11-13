@@ -34,6 +34,7 @@ A log analyzer that queries a database containing newspaper articles. The log ha
 ## Exploring the database
 Outside of just running the `news.py` file, you can explore the database with the following commands:
 
+* `vagrant ssh`: Ensures you're logged into the virtual machine. You must run this before any of the following commands. Run this in the `Log-Analyzer/vagrant/` directory.
 * `psql -d news`: Connects to the database. You must connect before running any of the following commands.
 * `\dt`: Stands for 'display tables'. Lists the tables that are available in the database.
 * `\d table`: Shows the database schema for that particular table.
