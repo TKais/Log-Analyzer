@@ -14,18 +14,18 @@ def get_result(db_query):
 
 def check_for_views():
     views = {
-        "sum_view": "CREATE OR REPLACE VIEW sum_view" +
-                    " AS SELECT date AS day, SUM(status_count)" +
-                    " AS status_sum from error_view GROUP BY day;",
-        "error_view": "CREATE OR REPLACE VIEW error_view" +
-                      " AS SELECT DATE(time), status, count(status) as" +
-                      " status_count from log GROUP BY DATE(time), status;",
-        "author_view": "CREATE OR REPLACE VIEW author_view" +
-                       " AS SELECT authors.name, articles.title," +
-                       " count(log.path) AS view_count FROM authors,"
-                       " articles, log WHERE authors.id = articles.author" +
-                       " and log.path LIKE concat('%', articles.slug)" +
-                       " GROUP BY authors.name, articles.title, log.path;",
+        "sum_view": """CREATE OR REPLACE VIEW sum_view
+                    AS SELECT date AS day, SUM(status_count)
+                    AS status_sum from error_view GROUP BY day;""",
+        "error_view": """CREATE OR REPLACE VIEW error_view
+                      AS SELECT DATE(time), status, count(status) as
+                      status_count from log GROUP BY DATE(time), status;""",
+        "author_view": """CREATE OR REPLACE VIEW author_view
+                       AS SELECT authors.name, articles.title,
+                       count(log.path) AS view_count FROM authors,
+                       articles, log WHERE authors.id = articles.author
+                       and log.path LIKE concat('%', articles.slug)
+                       GROUP BY authors.name, articles.title, log.path;""",
     }
     all_current_views = "select viewname from pg_catalog.pg_views"
     results = get_result(all_current_views)
